@@ -1,0 +1,24 @@
+{
+  "name": "metadata-form",
+  "description": "angular module for metadata forms",
+  "main": "",
+  "license": "MIT",
+  "keywords": [
+    "metadata",
+    "forms"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-bootstrap": "^2.4.0",
+    "bootstrap": "^3.3.7"
+  }
+}
