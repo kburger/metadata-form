@@ -1,0 +1,1 @@
+var form = angular.module('metadata.form', []);
