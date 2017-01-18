@@ -1,4 +1,11 @@
-<label>
-    <span>Field</span>
-    <input/>
+<label ng-attr-for="{{id}}">
+    <span>{{field.name}}</span>
 </label>
+
+<input class="form-control"
+    ng-attr-name="{{id}}"
+    ng-attr-type="{{field.type}}"
+    ng-attr-id="{{id}}"
+    ng-focus=""
+    ng-required="{{field.required}}"
+    metadata-field-decorator/>

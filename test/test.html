@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>metadata</h1>
+        <div id="metadata-target" ng-app="metadata.form">
+            <metadata-form></metadata-form>
+            <button id="my-btn">Submit</button>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://code.angularjs.org/1.6.1/angular.min.js"></script>
+        <script src="../dist/metadata-form.js"></script>
+
+        <script>
+        window.metadata.addListener(function(model) {
+            console.log('got model update', model);
+        })
+
+        var ng = angular.element('*[ng-app="metadata.form"]');
+        ng.ready(function() {
+            var $injector = ng.injector();
+            var service = $injector.get('CommService');
+
+            $('button#my-btn').click(function() {
+              var msg = service.ping();
+              console.log(msg);
+            });
+        });
+        </script>
+    </body>
+</html>
