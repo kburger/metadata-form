@@ -7,40 +7,43 @@ const SRC_HTML = 'src/**/*.html';
 const SRC_CSS = 'src/**/*.css';
 const PATH_DIST = 'dist/';
 
-gulp.task('dist.js', function() {
+gulp.task('dist:js', function() {
   var js = gulp.src(SRC_JS);
   var html = gulp.src(SRC_HTML)
-    .pipe($.angularTemplatecache());
+    .pipe($.angularTemplatecache({module: 'metadata.form'}));
 
     return merge(js, html)
+      .pipe($.angularFilesort())
       .pipe($.concat('metadata-form.js'))
       .pipe($.ngAnnotate())
+      .pipe($.insert.wrap('(function(){', '})();'))
       .pipe(gulp.dest(PATH_DIST))
       .pipe($.connect.reload());
 });
 
-gulp.task('dist.css', function() {
+gulp.task('dist:css', function() {
   return gulp.src(SRC_CSS)
     .pipe($.concat('metadata-form.css'))
     .pipe(gulp.dest(PATH_DIST))
     .pipe($.connect.reload());
 });
 
-gulp.task('dev.watch', function() {
-  gulp.watch(SRC_JS, 'js');
-  gulp.watch(SRC_HTML, 'html');
-  gulp.watch(SRC_CSS, 'css');
+gulp.task('dev:watch', function() {
+  gulp.watch(SRC_JS, ['dist:js']);
+  gulp.watch(SRC_HTML, ['dist:js']);
+  gulp.watch(SRC_CSS, ['dist:css']);
 });
 
-gulp.task('dev.connect', function() {
-  return $.connect({
+gulp.task('dev:connect', function() {
+  return $.connect.server({
     port: 9000,
+    root: '.',
     livereload: true
   });
 });
 
-gulp.task('dist', ['dist.js', 'dist.css']);
+gulp.task('dist', ['dist:js', 'dist:css']);
 
-gulp.task('dev', ['dist', 'dev.watch', 'dev.connect']);
+gulp.task('dev', ['dist', 'dev:watch', 'dev:connect']);
 
 gulp.task('default', ['dist']);
