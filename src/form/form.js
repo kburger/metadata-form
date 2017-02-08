@@ -1,23 +1,17 @@
-var form = angular.module('metadata.form', []);
+var form = angular.module('metadata.form', ['metadata.constants', 'ui.bootstrap']);
 
 form.service('CommService', function() {
+  var _callback;
+
   return {
     ping: function() {
       return 'Hello World';
+    },
+    setCallback: function(callback) {
+      _callback = callback;
+    },
+    update: function(model) {
+      _callback(model);
     }
   };
 });
-
-(function(w) {
-  w.metadata = w.metadata || {
-    callbacks: [],
-    addListener: function(callback) {
-      this.callbacks.push(callback);
-    },
-    notify: function(model) {
-      angular.forEach(this.callbacks, function(callback) {
-        callback(model);
-      });
-    }
-  };
-})(window);

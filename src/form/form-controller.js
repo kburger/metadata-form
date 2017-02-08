@@ -1,46 +1,20 @@
-form.controller('FormController', function($scope, $window) {
+form.controller('FormController', function($scope, $injector, CommService) {
   $scope.model = {};
 
-  $scope.$watch('model', function(n, o) {
-    $window.metadata.notify(n);
-  }, true);
+  var schema = $injector.get($scope.view);
+  $scope.components = schema.components;
 
-  $scope.components = {
-    title: {
-      name: 'Title',
-      url: 'http://example.com/title',
-      type: 'text',
-      description: 'The title of this resource',
-      required: true
-    },
-    homepage: {
-      name: 'Homepage',
-      url: 'http://example.com/homepage',
-      type: 'url',
-      description: 'The landing page of this resource',
-      required: false,
-      multiple: true
-    },
-    language: {
-      name: 'Language',
-      url: 'http://example.com/language',
-      type: 'url',
-      description: 'The primary language of this resources',
-      required: true,
-      autocomplete: {
-        source: 'language.json'
-      }
-    },
-    keyword: {
-      name: 'Keyword',
-      url: 'http://example.com/keyword',
-      type: 'text',
-      description: 'Keywords describing the resource',
-      required: false,
-      multiple: true
+  angular.forEach($scope.components, function(component) {
+    if (component.multiple === true) {
+      $scope.model[component.url] = [''];
     }
-  };
+    if (component.nested) {
+      $scope.model[component.url] = {};
+    }
+  });
 
-  $scope.model[$scope.components.homepage.url] = ['']
-  $scope.model[$scope.components.keyword.url] = [''];
+  $scope.submit = function() {
+    console.log('submitted', $scope.model);
+    CommService.update($scope.model);
+  };
 });

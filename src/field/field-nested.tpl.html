@@ -1,1 +1,7 @@
-<span>nested</span>
+<!-- 'parent' field -->
+<metadata-field-base></metadata-field-base>
+
+<!-- nested fields -->
+<div ng-init="parent = field">
+    <metadata-field-base ng-if="showThing" ng-repeat="(id,field) in parent.nested.components"></metadata-field-base>
+</div>

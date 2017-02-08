@@ -1,5 +1,4 @@
-<form>
-    <metadata-field ng-repeat="(id,field) in components">
-    </metadata-field>
-    <button type="submit">Test</button>
+<form name="metadataform" class="horizontal" ng-submit="submit()">
+    <metadata-field ng-repeat="(id,field) in components"></metadata-field>
+    <input type="submit" id="submit" value="Save"/>
 </form>
