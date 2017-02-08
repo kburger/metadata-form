@@ -32,7 +32,7 @@ gulp.task('dist:css', function() {
     .pipe($.connect.reload());
 });
 
-gulp.task('test', function(done) {
+gulp.task('test', ['dist:js'], function(done) {
   var Server = require('karma').Server;
   new Server({
     configFile: __dirname + '/karma.conf.js',
