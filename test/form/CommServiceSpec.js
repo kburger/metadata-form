@@ -13,7 +13,9 @@ describe('CommService spec', function() {
 
   it('CommService callback', function() {
     var thing = {
-      cb: function(m) {}
+      cb: function(m) {
+        // empty
+      }
     };
 
     spyOn(thing, 'cb');

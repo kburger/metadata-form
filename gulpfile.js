@@ -6,6 +6,7 @@ const SRC_JS = 'src/**/*.js';
 const SRC_HTML = 'src/**/*.html';
 const SRC_CSS = 'src/**/*.css';
 const PATH_DIST = 'dist/';
+const SRC_TEST = 'test/**/*.js';
 
 gulp.task('dist:js', function() {
   var js = gulp.src(SRC_JS);
@@ -43,6 +44,7 @@ gulp.task('dev:watch', function() {
   gulp.watch(SRC_JS, ['dist:js', 'test']);
   gulp.watch(SRC_HTML, ['dist:js']);
   gulp.watch(SRC_CSS, ['dist:css']);
+  gulp.watch(SRC_TEST, ['test']);
 });
 
 gulp.task('dev:connect', function() {
