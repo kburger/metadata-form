@@ -4,9 +4,6 @@ form.service('CommService', function() {
   var _callback;
 
   return {
-    ping: function() {
-      return 'Hello World';
-    },
     setCallback: function(callback) {
       _callback = callback;
     },

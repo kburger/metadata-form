@@ -31,8 +31,16 @@ gulp.task('dist:css', function() {
     .pipe($.connect.reload());
 });
 
+gulp.task('test', function(done) {
+  var Server = require('karma').Server;
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
 gulp.task('dev:watch', function() {
-  gulp.watch(SRC_JS, ['dist:js']);
+  gulp.watch(SRC_JS, ['dist:js', 'test']);
   gulp.watch(SRC_HTML, ['dist:js']);
   gulp.watch(SRC_CSS, ['dist:css']);
 });
@@ -45,7 +53,7 @@ gulp.task('dev:connect', function() {
   });
 });
 
-gulp.task('dist', ['dist:js', 'dist:css']);
+gulp.task('dist', ['dist:js', 'test', 'dist:css']);
 
 gulp.task('dev', ['dist', 'dev:watch', 'dev:connect']);
 

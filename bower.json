@@ -19,6 +19,7 @@
   "dependencies": {
     "angular": "^1.6.1",
     "angular-bootstrap": "^2.4.0",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "angular-mocks": "^1.6.2"
   }
 }
