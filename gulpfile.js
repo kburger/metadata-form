@@ -11,14 +11,17 @@ gulp.task('dist:js', function() {
   var js = gulp.src(SRC_JS);
   var html = gulp.src(SRC_HTML)
     .pipe($.angularTemplatecache({module: 'metadata.form'}));
+  var resources = gulp.src('resources/*.json')
+    .pipe($.angularData('resources.js', {suffix: '', name: 'metadata.constants'}))
+    .pipe($.uglify());
 
-    return merge(js, html)
-      .pipe($.angularFilesort())
-      .pipe($.concat('metadata-form.js'))
-      .pipe($.ngAnnotate())
-      .pipe($.insert.wrap('(function(){', '})();'))
-      .pipe(gulp.dest(PATH_DIST))
-      .pipe($.connect.reload());
+  return merge(js, html, resources)
+    .pipe($.angularFilesort())
+    .pipe($.concat('metadata-form.js'))
+    .pipe($.ngAnnotate())
+    .pipe($.insert.wrap('(function(){', '})();'))
+    .pipe(gulp.dest(PATH_DIST))
+    .pipe($.connect.reload());
 });
 
 gulp.task('dist:css', function() {
