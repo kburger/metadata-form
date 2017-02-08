@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <h1>metadata</h1>
+        <div id="foo"> <!--  ng-app="metadata.form"> -->
+            <h2>Repository</h2>
+            <metadata-form view="repository"></metadata-form>
+
+            <h2>Catalog</h2>
+            <metadata-form view="catalog"></metadata-form>
+
+            <h2>Dataset</h2>
+            <metadata-form view="dataset"></metadata-form>
+
+            <h2>Distribution</h2>
+            <metadata-form view="distribution"></metadata-form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.angularjs.org/1.6.1/angular.min.js"></script>
+        <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="../dist/metadata-form.js"></script>
+
+        <script>
+        // var ng = angular.element('*[ng-app="metadata.form"]');
+        // ng.ready(function() {
+        //     var $injector = ng.injector();
+        //     var service = $injector.get('CommService');
+        //     service.setCallback(function(model) {
+        //       console.log('callback in legacy app:', model);
+        //     });
+        // });
+        </script>
+        <script>
+        (function() {
+            var $injector = angular.bootstrap($('div#foo'), ['metadata.form']);
+            var service = $injector.get('CommService');
+            service.setCallback(function(model) {
+                console.log('callback from bootstrapped ng app');
+            });
+        })();
+        </script>
+    </body>
+</html>
