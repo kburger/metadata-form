@@ -10,17 +10,20 @@ const SRC_TEST = 'test/**/*.js';
 
 gulp.task('dist:js', function() {
   var js = gulp.src(SRC_JS);
+
   var html = gulp.src(SRC_HTML)
+    .pipe($.htmlmin({collapseWhitespace: true, removeComments: true}))
     .pipe($.angularTemplatecache({module: 'metadata.form'}));
+
   var resources = gulp.src('resources/*.json')
-    .pipe($.angularData('resources.js', {suffix: '', name: 'metadata.constants'}))
-    .pipe($.uglify());
+    .pipe($.angularData('resources.js', {suffix: '', name: 'metadata.constants'}));
 
   return merge(js, html, resources)
     .pipe($.angularFilesort())
     .pipe($.concat('metadata-form.js'))
     .pipe($.ngAnnotate())
     .pipe($.insert.wrap('(function(){', '})();'))
+    .pipe($.uglify())
     .pipe(gulp.dest(PATH_DIST))
     .pipe($.connect.reload());
 });
