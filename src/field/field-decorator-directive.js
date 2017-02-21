@@ -5,7 +5,7 @@ form.directive('metadataFieldDecorator', function($compile) {
       // set defaults
       var ngModelAttrValue = 'model[field.url]';
 
-      if (scope.field.type === 'url') {
+      if (scope.field.type === 'url' && !scope.field.autocomplete) {
         attrs.$set('ng-attr-placeholder', 'http://');
       }
 
