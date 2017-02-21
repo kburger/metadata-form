@@ -1,4 +1,12 @@
 <form name="metadataform" class="horizontal" ng-submit="submit()">
-    <metadata-field ng-repeat="(id,field) in components"></metadata-field>
+    <a href="#" ng-click="showOpt=!showOpt">
+        <span ng-if="showOpt">Hide</span><span ng-if="!showOpt">Show</span>&nbsp;optionals
+    </a>
+    
+    <metadata-field
+        ng-repeat="(id,field) in components"
+        ng-show="field.required || showOpt"
+        ng-if="!field.generated">
+    </metadata-field>
     <input type="submit" id="submit" value="Save"/>
 </form>

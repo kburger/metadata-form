@@ -5,16 +5,20 @@ form.directive('metadataFieldDecorator', function($compile) {
       // set defaults
       var ngModelAttrValue = 'model[field.url]';
 
+      if (scope.field.type === 'url') {
+        attrs.$set('ng-attr-placeholder', 'http://');
+      }
+
       if (scope.field.autocomplete) {
         // append attributes
         attrs.$set('uib-typeahead', 'result.label for result in getAutocompleteResults(field, $viewValue)');
-        attrs.$set('typeahead-loading', 'fubar');
+        attrs.$set('typeahead-loading', 'autocompleteLoading');
         attrs.$set('typeahead-wait-ms', 200);
         attrs.$set('typeahead-min-length', 2);
         attrs.$set('typeahead-on-select', 'selectAutocompleteResult($item, field, $index)');
 
         // append resource loading indicator element
-        var indicator = angular.element('<span ng-show="fubar">loading</span>');
+        var indicator = angular.element('<span ng-show="autocompleteLoading" class="form-control-feedback spinner"></span>');
         element.after(indicator);
         $compile(indicator)(scope);
       }

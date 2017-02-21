@@ -58,7 +58,11 @@ form.directive('metadataField', function($http, $filter, $injector) {
       };
 
       scope.selectAutocompleteResult = function($item, field, $index) {
-        scope.model[field.url][$index] = $item.url;
+        if (field.multiple === true) {
+          scope.model[field.url][$index] = $item.url;
+        } else {
+          scope.model[field.url] = $item.url;
+        }
       };
     },
     template: '<ng-include src="template"></ng-include><br/><br/>'
