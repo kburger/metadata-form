@@ -16,6 +16,10 @@ form.directive('metadataFieldDecorator', function($compile) {
         attrs.$set('typeahead-wait-ms', 200);
         attrs.$set('typeahead-min-length', 2);
         attrs.$set('typeahead-on-select', 'selectAutocompleteResult($item, field, $index)');
+        // only add the custom autocomplete widgets if there are descriptions available
+        if (scope.field.autocomplete.hasDescription) {
+          attrs.$set('typeahead-template-url', 'field/custom-typeahead-match.html');
+        }
 
         // append resource loading indicator element
         var indicator = angular.element('<span ng-show="autocompleteLoading" class="form-control-feedback spinner"></span>');

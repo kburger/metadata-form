@@ -133,10 +133,12 @@
                         "root": "search",
                         "props": {
                             "label": "label",
-                            "concepturi": "url"
+                            "concepturi": "url",
+                            "description" : "description"
                         }
                     }
-                }
+                },
+                "hasDescription": true
             }
         },
         "dcat-contactpoint": {

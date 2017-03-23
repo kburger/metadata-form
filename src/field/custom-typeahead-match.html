@@ -1,0 +1,5 @@
+<!-- based on https://github.com/angular-ui/bootstrap/blob/master/template/typeahead/typeahead-match.html -->
+<a href tabindex="-1" ng-attr-title="{{match.label}}">
+    <span class="custom-label" ng-bind-html="match.label | uibTypeaheadHighlight:query"></span><br>
+    <span class="custom-description">{{match.model.description || "No description available"}}</span>
+</a>
