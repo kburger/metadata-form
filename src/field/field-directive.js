@@ -1,4 +1,4 @@
-form.directive('metadataField', function($http, $filter, $injector) {
+form.directive('metadataField', function($rootScope, $http, $filter, $injector) {
   return {
     restrict: 'EA',
     link: function(scope, element, attrs) {
@@ -9,6 +9,10 @@ form.directive('metadataField', function($http, $filter, $injector) {
       } else {
         scope.template = 'field/field.tpl.html';
       }
+
+      scope.fieldFocus = function(field) {
+        $rootScope.$broadcast('field-focus', field);
+      };
 
       scope.add = function($index) {
         if (!scope.model[scope.field.url]) {

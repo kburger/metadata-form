@@ -11,7 +11,7 @@
             ng-attr-name="{{id}}"
             ng-attr-type="{{field.type}}"
             ng-attr-id="{{id}}{{$index}}"
-            ng-focus=""
+            ng-focus="fieldFocus(field)"
             ng-required="field.required"
             metadata-field-decorator/>
     </div>
