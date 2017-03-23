@@ -121,12 +121,13 @@
             "required": true,
             "autocomplete": {
                 "api": {
-                    "endpoint": "https://cors-anywhere.herokuapp.com/https://www.wikidata.org/w/api.php",
+                    "endpoint": "https://www.wikidata.org/w/api.php",
                     "inputparam": "search",
                     "params": {
                         "action": "wbsearchentities",
                         "language": "en",
-                        "format": "json"
+                        "format": "json",
+                        "origin": "*"
                     },
                     "response": {
                         "root": "search",
