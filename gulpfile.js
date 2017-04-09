@@ -30,7 +30,7 @@ gulp.task('dist:js', function() {
 
 gulp.task('dist:css', function() {
   return gulp.src(SRC_CSS)
-    .pipe($.concat('metadata-editor.min.css'))
+    .pipe($.concat('metadata-form.min.css'))
     .pipe($.cssnano())
     .pipe(gulp.dest(PATH_DIST))
     .pipe($.connect.reload());

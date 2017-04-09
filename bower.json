@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "angular module for metadata forms",
   "main": [
-    "dist/metadata-form.js",
-    "dist/metadata-form.css"
+    "dist/metadata-form.min.js",
+    "dist/metadata-form.min.css"
   ],
   "license": "MIT",
   "keywords": [
