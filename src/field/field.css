@@ -6,8 +6,8 @@ ul.dropdown-menu {
     width:350px;
 }
 span.custom-label {
-    white-space: normal;
     border-bottom: 1px solid #abc;
+    white-space: normal;
     word-break: break-all;
 }
 span.custom-description {
@@ -15,7 +15,6 @@ span.custom-description {
     font-size: small;
 }
 
-/* loading spinner */
 @keyframes spinner {
     to { transform: rotate(360deg); }
 }
