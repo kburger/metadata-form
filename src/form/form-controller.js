@@ -1,5 +1,7 @@
 form.controller('FormController', function($scope, $injector, CommService) {
-  $scope.model = {};
+  if ($scope.model === undefined) {
+    $scope.model = {};
+  }
 
   var schema = $injector.get($scope.view);
   $scope.components = schema.components;

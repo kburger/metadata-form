@@ -4,7 +4,8 @@ form.directive('metadataForm', function() {
     templateUrl: 'form/form.tpl.html',
     controller: 'FormController',
     scope: {
-      view: '@'
+      view: '@',
+      model: '='
     }
   };
 });

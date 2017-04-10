@@ -11,8 +11,11 @@ form.directive('metadataField', function($rootScope, $http, $filter, $injector) 
       }
 
       scope.fieldFocus = function(field) {
-        $rootScope.$broadcast('field-focus', field);
+        $rootScope.$broadcast('metadata.field.focus', field);
       };
+      scope.fieldBlur = function(field) {
+        $rootScope.$broadcast('metadata.field.blur', field);
+      }
 
       scope.add = function($index) {
         if (!scope.model[scope.field.url]) {
