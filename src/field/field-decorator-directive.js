@@ -32,11 +32,11 @@ form.directive('metadataFieldDecorator', function($compile) {
         ngModelAttrValue = 'model[field.url][$index]';
         
         // append plus and minus buttons to the element
-        var minus = angular.element('<a href="#" ng-click="remove($index)" ng-show="model[field.url].length > 1"><span class="glyphicon glyphicon-minus-sign"></span></a>');
+        var minus = angular.element('<a href ng-click="remove($index)" ng-show="model[field.url].length > 1"><span class="glyphicon glyphicon-minus-sign"></span></a>');
         element.after(minus);
         $compile(minus)(scope);
 
-        var plus = angular.element('<a href="#" ng-click="add($index)"><span class="glyphicon glyphicon-plus-sign"></span></a>');
+        var plus = angular.element('<a href ng-click="add($index)"><span class="glyphicon glyphicon-plus-sign"></span></a>');
         element.after(plus);
         $compile(plus)(scope);
       }
@@ -45,7 +45,7 @@ form.directive('metadataFieldDecorator', function($compile) {
         ngModelAttrValue = 'model[field.url].url';
 
         var expandCollapse = angular.element(
-          '<a href="#" ng-click="showThing=!showThing">' +
+          '<a href ng-click="showThing=!showThing">' +
           '<span ng-class="{glyphicon:true, \'glyphicon-collapse-down\':!showThing, \'glyphicon-collapse-up\':showThing}"></span>' +
           '</a>');
         element.after(expandCollapse);
