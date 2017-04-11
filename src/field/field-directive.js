@@ -15,7 +15,7 @@ form.directive('metadataField', function($rootScope, $http, $filter, $injector) 
       };
       scope.fieldBlur = function(field) {
         $rootScope.$broadcast('metadata.field.blur', field);
-      }
+      };
 
       scope.add = function($index) {
         if (!scope.model[scope.field.url]) {

@@ -3,6 +3,11 @@ form.controller('FormController', function($scope, $injector, CommService) {
     $scope.model = {};
   }
 
+  console.log('show save button value', $scope.showSaveButton);
+  if ($scope.showSaveButton === undefined) {
+    $scope.showSaveButton = true;
+  }
+
   var schema = $injector.get($scope.view);
   $scope.components = schema.components;
 

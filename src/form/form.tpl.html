@@ -9,5 +9,5 @@
         ng-if="!field.generated">
     </metadata-field>
     
-    <input type="submit" id="submit" value="Save"/>
+    <input ng-if="showSaveButton" type="submit" id="submit" value="Save"/>
 </form>
