@@ -10,7 +10,9 @@ const PATH_DIST = 'dist/';
 const SRC_TEST = 'test/**/*.js';
 
 gulp.task('dist:js', function() {
-  var js = gulp.src(['src/form/form.js', 'src/**/!(form).js']);
+  var js = gulp.src(['src/form/form.js', 'src/**/!(form).js'])
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('default'));
 
   var html = gulp.src(SRC_HTML)
     .pipe($.htmlmin({collapseWhitespace: true, removeComments: true}))
@@ -23,7 +25,8 @@ gulp.task('dist:js', function() {
     .pipe($.concat('metadata-form.min.js'))
     .pipe($.ngAnnotate())
     .pipe($.insert.wrap('(function(){', '})();'))
-    .pipe($.uglify())
+    .pipe($.babel({presets: ['es2015']}))
+    .pipe($.uglify().on('error', $.util.log))
     .pipe(gulp.dest(PATH_DIST))
     .pipe($.connect.reload());
 });
