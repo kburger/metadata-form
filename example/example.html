@@ -2,12 +2,13 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../dist/metadata-form.min.css"/>
     </head>
     <body>
         <h1>metadata</h1>
         <div id="foo"> <!--  ng-app="metadata.form"> -->
             <h2>Repository</h2>
-            <metadata-form view="repository"></metadata-form>
+            <metadata-form view="repository" show-save-button="false"></metadata-form>
 
             <h2>Catalog</h2>
             <metadata-form view="catalog"></metadata-form>
@@ -24,7 +25,7 @@
         <script src="https://code.angularjs.org/1.6.1/angular.min.js"></script>
         <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
         <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-        <script src="../dist/metadata-form.js"></script>
+        <script src="../dist/metadata-form.min.js"></script>
 
         <script>
         // var ng = angular.element('*[ng-app="metadata.form"]');
@@ -39,10 +40,10 @@
         <script>
         (function() {
             var $injector = angular.bootstrap($('div#foo'), ['metadata.form']);
-            var service = $injector.get('CommService');
-            service.setCallback(function(model) {
-                console.log('callback from bootstrapped ng app');
-            });
+            // var service = $injector.get('CommService');
+            // service.setCallback(function(model) {
+            //     console.log('callback from bootstrapped ng app');
+            // });
         })();
         </script>
     </body>
