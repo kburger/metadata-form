@@ -17,6 +17,16 @@ form.directive('metadataField', function($rootScope, $http, $filter, $injector) 
         $rootScope.$broadcast('metadata.field.blur', field);
       };
 
+      scope.isDisabled = function(field) {
+        if (field.isExcludedBy) {
+          var excludingField = scope.components[field.isExcludedBy];
+          var excludingFieldValue = scope.model[excludingField.url];
+
+          return excludingFieldValue && (excludingFieldValue !== '' || excludingFieldValue !== []);
+        }
+        return false;
+      };
+
       scope.add = function($index) {
         if (!scope.model[scope.field.url]) {
           scope.model[scope.field.url] = [];
@@ -41,7 +51,9 @@ form.directive('metadataField', function($rootScope, $http, $filter, $injector) 
             params[api.inputparam] = $viewValue;
           }
 
-          return $http.get(api.endpoint, {params: params}).then(function(response) {
+          return $http.get(api.endpoint, {
+            params: params
+          }).then(function(response) {
             var root = response.data[api.response.root] || response.data;
             var props = api.response.props;
 

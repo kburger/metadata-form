@@ -15,11 +15,23 @@
             "name": "Title",
             "url": "http://purl.org/dc/terms/title",
             "type": "text",
-            "description": "A name given to the repository.",
+            "description": "A name given to the FAIR Data Point. Can reflect topics, institutions, authorities, locations.",
             "required": true,
             "examples": [
-                "Example Datapoint",
-                "Text-mining repository"
+                "FDP Leiden University Medical Center",
+                "Department of Human Genetics",
+                "Den Dunnen Lab",
+                "LOVD",
+                "Leiden Gemeente",
+                "New York City Public Library",
+                "The Weather Company",
+                "OpenTraffic",
+                "Netflix",
+                "National Oceanic and Atmospheric Administration",
+                "Mendeley Data",
+                "EBI",
+                "Data Hub",
+                "Data Verse"
             ]
         },
         "fdp-metadataissued": {
@@ -42,8 +54,12 @@
             "name": "Has version",
             "url": "http://purl.org/dc/terms/hasVersion",
             "type": "text",
-            "description": "The version number for this resource",
-            "required": true
+            "description": "The version number for this FDP. Can accept arbitrary string values.",
+            "required": true,
+            "examples": [
+                "1.0",
+                "2017_02"
+            ]
         },
         "dct-description": {
             "name": "Description",
@@ -56,9 +72,25 @@
             "name": "Publisher",
             "url": "http://purl.org/dc/terms/publisher",
             "type": "url",
-            "description": "The entity responsible for making the repository online.",
-            "multiple": true,
-            "required": true
+            "description": "All institutions being responsible for funding, creating and/or running the repository.",
+            "required": true,
+            "nested": {
+                "type": "http://xmlns.com/foaf/0.1/Organization",
+                "components": {
+                    "institute-foaf-name": {
+                        "name": "Name",
+                        "url": "http://xmlns.com/foaf/0.1/name",
+                        "type": "text",
+                        "description": "Name of the insitution",
+                        "required": true,
+                        "examples": [
+                            "Springer-Nature",
+                            "Science Magazine",
+                            "The Leiden Biosemantics Group"
+                        ]
+                    }
+                }
+            }
         },
         "dct-language": {
             "name": "Language",
@@ -108,6 +140,7 @@
             "type": "url",
             "description": "Identifier of the metadata entry",
             "required": true,
+            "generated": true,
             "nested": {
                 "type": "http://purl.org/spar/datacite/ResourceIdentifier",
                 "components": {
@@ -162,6 +195,7 @@
             "type": "url",
             "description": "Identifier of the repository.",
             "required": true,
+            "generated": true,
             "nested": {
                 "type": "http://purl.org/spar/datacite/ResourceIdentifier",
                 "components": {

@@ -56,7 +56,7 @@ form.directive('metadataFieldDecorator', function($compile) {
         ngModelAttrValue = 'model[field.url].url';
 
         var expandCollapse = angular.element(`
-          <a href ng-click="showThing=!showThing" tabindex="-1">
+          <a href ng-init="showThing = true" ng-click="showThing=!showThing" tabindex="-1">
             <span ng-class="{glyphicon:true, 'glyphicon-collapse-down':!showThing, 'glyphicon-collapse-up':showThing}"></span>
           </a>`);
         element.after(expandCollapse);
@@ -65,7 +65,6 @@ form.directive('metadataFieldDecorator', function($compile) {
 
       // !! this won't work with nested fields within nested fields !!
       if (scope.parent && !scope.field.nested) {
-        // console.log(scope.parent.name, 'is the parent of', scope.field.name, '?');
         ngModelAttrValue = 'model[parent.url][field.url]';
       }
 

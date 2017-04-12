@@ -14,8 +14,17 @@
             "name": "Title",
             "url": "http://purl.org/dc/terms/title",
             "type": "text",
-            "description": "A name given to the distribution.",
-            "required": true
+            "description": "A name given to the Distribution. Roughly, specifies the ‘format’ or concrete representation of the dataset (see Media Type below) and how it can be accessed. A dataset may have multiple distributions.",
+            "required": true,
+            "examples": [
+                "Downloadable CSV file",
+                "Downloadable PDF file",
+                "Downloadable TIFF file",
+                "Downloadable txt file",
+                "Downloadable ttl file",
+                "An API",
+                "A webpage"
+            ]
         },
         "dct-issued": {
             "name": "Release date",
@@ -69,7 +78,8 @@
             "url": "http://www.w3.org/2000/01/rdf-schema#label",
             "type": "text",
             "description": "Label that indicates the thing",
-            "required": true
+            "required": true,
+            "generated": true
         },
         "dcat-accessurl": {
             "name": "Access URL",
@@ -77,7 +87,7 @@
             "type": "url",
             "description": "A landing page, feed, SPARQL endpoint or other type of resource that gives access to the distribution of the dataset.",
             "required": true,
-            "alternative": "dcat-downloadurl"
+            "isExcludedBy": "dcat-downloadurl"
         },
         "dcat-downloadurl": {
             "name": "Download URL",
@@ -85,7 +95,7 @@
             "type": "url",
             "description": "A file that contains the distribution of the dataset in a given format.",
             "required": true,
-            "alternative": "dcat-accessurl"
+            "isExcludedBy": "dcat-accessurl"
         },
         "dcat-mediatype": {
             "name": "Media type",
@@ -114,6 +124,7 @@
             "type": "url",
             "description": "Identifier of the metadata entry",
             "required": true,
+            "generated": true,
             "nested": {
                 "type": "http://purl.org/spar/datacite/ResourceIdentifier",
                 "components": {

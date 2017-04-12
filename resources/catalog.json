@@ -15,8 +15,14 @@
             "name": "Title",
             "url": "http://purl.org/dc/terms/title",
             "type": "text",
-            "description": "A name given to the catalog.",
-            "required": true
+            "description": "A name given to the Catalog. A Catalog is an arbitrary grouping of datasets. Can reflect topics, experiments, institutions, authorities, archives & repositories, locations.",
+            "required": true,
+            "examples": [
+                "Patient registries",
+                "Biobank registries",
+                "Manuscripts 1780-1886",
+                "Paleoclimatology core samples"
+            ]
         },
         "dct-issued": {
             "name": "Release date",
@@ -44,17 +50,23 @@
             "name": "Publisher",
             "url": "http://purl.org/dc/terms/publisher",
             "type": "url",
-            "description": "The entity responsible for making the catalog online.",
+            "description": "All entities (person, groups, institutions) responsible for managing the Catalog. Consider who is the data owner, funding agency of the data, legal authority granting permission to the data.",
             "required": true,
             "nested": {
                 "type": "http://xmlns.com/foaf/0.1/Organization",
                 "components": {
-                    "institure-foaf-name": {
+                    "institute-foaf-name": {
                         "name": "Name",
                         "url": "http://xmlns.com/foaf/0.1/name",
                         "type": "text",
                         "description": "Name of the insitution",
-                        "required": true
+                        "required": true,
+                        "examples": [
+                            "RD-Connect Consortium",
+                            "BBMRI-NL",
+                            "The Leiden University Library",
+                            "World Data Center for Paleoclimatology"
+                        ]
                     }
                 }
             }
@@ -99,7 +111,8 @@
             "url": "http://www.w3.org/2000/01/rdf-schema#label",
             "type": "text",
             "description": "Label that indicates the thing",
-            "required": false
+            "required": false,
+            "generated": true
         },
         "foaf-homepage": {
             "name": "Homepage",
