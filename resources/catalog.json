@@ -143,6 +143,7 @@
             "type": "url",
             "description": "Identifier of the metadata entry",
             "required": true,
+            "generated": true,
             "nested": {
                 "type": "http://purl.org/spar/datacite/ResourceIdentifier",
                 "components": {
