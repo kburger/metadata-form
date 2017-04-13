@@ -159,7 +159,8 @@
             "url": "http://www.w3.org/2000/01/rdf-schema#label",
             "type": "text",
             "description": "Label that indicates the thing",
-            "required": false
+            "required": false,
+            "generated": true
         },
         "r3d-datacatalog": {
             "name": "Catalog",
