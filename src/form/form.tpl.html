@@ -3,11 +3,10 @@
         <span ng-if="showOpt">Hide</span><span ng-if="!showOpt">Show</span>&nbsp;optional fields
     </a>
     <div class="clearfix"></div>
-    
-    <metadata-field
-        ng-repeat="(id,field) in components"
+
+    <metadata-field ng-repeat="(id,field) in components"
         ng-show="field.required || showOpt"
-        ng-if="!field.generated">
+        ng-if="!field.generated && !isUserHidden(id)">
     </metadata-field>
     
     <input ng-if="showSaveButton" type="submit" id="submit" value="Save"/>

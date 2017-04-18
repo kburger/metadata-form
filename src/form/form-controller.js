@@ -2,10 +2,13 @@ form.controller('FormController', function($scope, $injector, CommService) {
   if ($scope.model === undefined) {
     $scope.model = {};
   }
-
-  console.log('show save button value', $scope.showSaveButton);
+  
   if ($scope.showSaveButton === undefined) {
     $scope.showSaveButton = true;
+  }
+  
+  if ($scope.hideFields === undefined) {
+    $scope.hideFields = [];
   }
 
   var schema = $injector.get($scope.view);
@@ -20,7 +23,17 @@ form.controller('FormController', function($scope, $injector, CommService) {
     }
   });
 
+  $scope.isUserHidden = function(id) {
+    return $scope.hideFields.indexOf(id) !== -1;
+  };
+
   $scope.submit = function() {
+    console.log('form valid:', $scope.metadataForm.$valid);
+
+    angular.forEach($scope.metadataForm, function(input) {
+      console.log('input', input);
+    });
+
     console.log('submitted', $scope.model);
     CommService.update($scope.model);
   };

@@ -6,7 +6,8 @@ form.directive('metadataForm', function() {
     scope: {
       view: '@',
       model: '=?',
-      showSaveButton: '=?'
+      showSaveButton: '=?',
+      hideFields: '@?'
     }
   };
 });
