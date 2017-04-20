@@ -28,13 +28,6 @@ form.controller('FormController', function($scope, $injector, CommService) {
   };
 
   $scope.submit = function() {
-    console.log('form valid:', $scope.metadataForm.$valid);
-
-    angular.forEach($scope.metadataForm, function(input) {
-      console.log('input', input);
-    });
-
-    console.log('submitted', $scope.model);
     CommService.update($scope.model);
   };
 });
